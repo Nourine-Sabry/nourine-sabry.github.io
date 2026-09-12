@@ -457,20 +457,28 @@
   }
   
   /* ---------- PUBLICATIONS ---------- */
-  .pub-card{ padding:22px 24px; margin-bottom:16px; }
-  .pub-card:last-child{ margin-bottom:0; }
-  .pub-title{ font-weight:500; font-size:15.5px; margin-bottom:4px; color:var(--text); }
-  .pub-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--bold); }
-  .pub-link{
-  font-family:'IBM Plex Mono', monospace;
-  font-size:12.5px;
-  color:var(--burgundy);
+.pub-card{
+  padding:22px 24px;
   text-decoration:none;
-  margin-top:16px;
-  display:inline-block;
+  color:inherit;
+  display:block;
+  transition:transform .12s ease, box-shadow .12s ease;
 }
-  .pub-link:hover{ text-decoration:underline; }
+.pub-card:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--burgundy); }
+.pub-card:hover .pub-title{ color:var(--burgundy); }
 
+/* ---------- QUOTES ---------- */  
+.quotes-card{ max-width:720px; margin:0 auto; }
+.quotes-body{ padding:48px 40px; text-align:center; }
+.quote-text{
+  font-size:19px; line-height:1.6; color:var(--text); font-style:italic;
+  max-width:60ch; margin:0 auto 16px; transition:opacity .3s ease;
+}
+.quote-author{
+  font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--burgundy);
+  transition:opacity .3s ease;
+}
+  
   /* ---------- CONTACT / FOOTER ---------- */
   footer{ padding:72px 0 48px; }
   .contact-grid{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px; }
@@ -1021,24 +1029,40 @@
       <h2>publications</h2>
     </div>
 
-    <div class="pub-card card-block">
+    <a class="pub-card card-block"
+       href="https://doi.org/10.1007/s44154-024-00160-2"
+       target="_blank"
+       rel="noopener">
       <div class="pub-title">
         The Genetic Orchestra of Salicylic Acid in Plant Resilience to Climate Change Induced Abiotic Stress: Critical Review
       </div>
       <div class="pub-meta">
         Stress Biology · Springer · 2024
       </div>
-    </div>
-
-    <a class="pub-link"
-       href=" https://doi.org/10.1007/s44154-024-00160-2"
-       target="_blank"
-       rel="noopener">
-      Read the full article here ↗
     </a>
   </div>
 </section>
 
+<section id="quotes" class="band-a">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mark"></span>
+      <h2>quotes</h2>
+    </div>
+
+    <div class="quotes-card card-block">
+      <div class="work-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="work-file">notes.txt</span>
+      </div>
+      <div class="quotes-body">
+        <p class="quote-text" id="quoteText">"[placeholder quote one goes here]"</p>
+        <p class="quote-author" id="quoteAuthor">— [author one]</p>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <footer id="contact" class="band-a">
   <div class="wrap">
     <div class="contact-grid">
@@ -1057,5 +1081,33 @@
   </div>
 </footer>
 
+<script>
+  const quotes = [
+    { text: "[placeholder quote one goes here]", author: "[author one]" },
+    { text: "[placeholder quote two goes here]", author: "[author two]" },
+    { text: "[placeholder quote three goes here]", author: "[author three]" },
+    { text: "[placeholder quote four goes here]", author: "[author four]" }
+  ];
+  let quoteIndex = 0;
+  const quoteTextEl = document.getElementById('quoteText');
+  const quoteAuthorEl = document.getElementById('quoteAuthor');
+
+  function showQuote(i){
+    quoteTextEl.style.opacity = 0;
+    quoteAuthorEl.style.opacity = 0;
+    setTimeout(() => {
+      quoteTextEl.textContent = '"' + quotes[i].text + '"';
+      quoteAuthorEl.textContent = '— ' + quotes[i].author;
+      quoteTextEl.style.opacity = 1;
+      quoteAuthorEl.style.opacity = 1;
+    }, 300);
+  }
+
+  setInterval(() => {
+    quoteIndex = (quoteIndex + 1) % quotes.length;
+    showQuote(quoteIndex);
+  }, 10000);
+</script>
+  
 </body>
 </html>
