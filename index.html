@@ -9,50 +9,67 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FAFAF8;
-    --ink:#141414;
-    --grey:#8A8680;
-    --grey-light:#B8B4AD;
-    --line:#DEDBD5;
+    /* ===== EDIT COLORS HERE =====
+       bg-a / bg-b: the two greys that alternate section-to-section
+       bold: dark graphite used for borders, headings, buttons, chrome bars
+       text: near-black body copy color (kept separate from "bold" for readability)
+       card-bg: the light color inside cards/boxes so content stays easy to read
+       burgundy / burgundy-deep: the one accent color, used sparingly
+    */
+    --bg-a:#A5A5A5;
+    --bg-b:#8C8C8C;
+    --bold:#545454;
+    --text:#202020;
+    --card-bg:#F2F1EC;
+    --line:#7A7A7A;
     --burgundy:#6E1F2A;
     --burgundy-deep:#4A1119;
+
+    /* the custom cursor (7-ball). Swap the fill colors inside this SVG string
+       if you ever want to recolor it — search for %236E1F2A (burgundy) etc. */
+    --cursor-ball: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2214.5%22%20fill%3D%22%236E1F2A%22%20stroke%3D%22%232E0C11%22%20stroke-width%3D%221.5%22/%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216.5%22%20r%3D%227.5%22%20fill%3D%22%23F5F0E8%22%20stroke%3D%22%232E0C11%22%20stroke-width%3D%221%22/%3E%0A%3Ctext%20x%3D%2216%22%20y%3D%2220.5%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2210%22%20font-weight%3D%22700%22%20fill%3D%22%23141414%22%20text-anchor%3D%22middle%22%3E7%3C/text%3E%0A%3Cellipse%20cx%3D%2211.5%22%20cy%3D%2210.5%22%20rx%3D%223.4%22%20ry%3D%222.2%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.55%22%20transform%3D%22rotate%28-25%2011.5%2010.5%29%22/%3E%0A%3C/svg%3E");
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{ scroll-behavior:smooth; cursor:var(--cursor-ball) 16 16, auto; }
+
+  a, button, .btn, .work-card{ cursor:var(--cursor-ball) 16 16, pointer; }
 
   body{
-    background:var(--bg);
-    color:var(--ink);
+    background:var(--bg-a);
+    color:var(--text);
     font-family:'IBM Plex Sans', sans-serif;
     font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
 
-  ::selection{background:var(--burgundy); color:#fff;}
-  a{color:inherit;}
+  ::selection{ background:var(--burgundy); color:#fff; }
+  a{ color:inherit; }
 
   .wrap{ max-width:1040px; margin:0 auto; padding:0 32px; }
 
+  /* alternating section bands */
+  .band-a{ background:var(--bg-a); }
+  .band-b{ background:var(--bg-b); }
+
   /* shared bold card component: bordered box + hard offset shadow */
   .card-block{
-    border:2px solid var(--ink);
-    background:#fff;
-    box-shadow:6px 6px 0 var(--line);
+    border:2px solid var(--bold);
+    background:var(--card-bg);
+    box-shadow:6px 6px 0 var(--text);
   }
 
   /* ---------- NAV ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(250,249,248,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
+    background:var(--card-bg);
+    border-bottom:2px solid var(--bold);
   }
   nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
   .nav-mark{
     font-family:'IBM Plex Mono', monospace;
-    font-size:14px; font-weight:500;
+    font-size:14px; font-weight:600; color:var(--bold);
     display:flex; align-items:center; gap:8px;
   }
   .nav-mark .dot{ width:8px;height:8px; background:var(--burgundy); display:inline-block; }
@@ -65,7 +82,7 @@
   .nav-links a:hover::after{ width:100%; }
 
   /* ---------- HERO ---------- */
-  .hero{ padding:96px 0 88px; border-bottom:1px solid var(--line); }
+  .hero{ padding:96px 0 88px; }
   .hero-grid{ display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center; }
   .eyebrow{
     font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--burgundy);
@@ -78,104 +95,108 @@
   @keyframes blink{ 50%{ opacity:0; } }
 
   h1{
-    font-family:'IBM Plex Mono', monospace; font-weight:600;
+    font-family:'IBM Plex Mono', monospace; font-weight:600; color:var(--bold);
     font-size:clamp(34px, 4.6vw, 52px); line-height:1.12; letter-spacing:-0.01em;
     margin-bottom:24px;
   }
   h1 span{ color:var(--burgundy); }
 
-  .hero p.lede{ font-size:18px; color:#3a3a3a; max-width:48ch; margin-bottom:32px; }
+  .hero p.lede{ font-size:18px; color:var(--text); max-width:48ch; margin-bottom:32px; }
 
   .btn-row{ display:flex; gap:20px; flex-wrap:wrap; }
   .btn{
     font-family:'IBM Plex Mono', monospace; font-size:14px;
-    padding:12px 20px; border:2px solid var(--ink);
+    padding:12px 20px; border:2px solid var(--bold);
     text-decoration:none; display:inline-block;
-    box-shadow:4px 4px 0 var(--ink);
+    box-shadow:4px 4px 0 var(--text);
     transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
   }
-  .btn.primary{ background:var(--ink); color:var(--bg); }
+  .btn.primary{ background:var(--bold); color:var(--card-bg); }
   .btn.primary:hover{ background:var(--burgundy); border-color:var(--burgundy); box-shadow:4px 4px 0 var(--burgundy-deep); }
-  .btn.ghost:hover{ background:var(--ink); color:var(--bg); }
-  .btn:active{ transform:translate(4px,4px); box-shadow:0 0 0 var(--ink); }
+  .btn.ghost{ background:transparent; color:var(--text); }
+  .btn.ghost:hover{ background:var(--bold); color:var(--card-bg); }
+  .btn:active{ transform:translate(4px,4px); box-shadow:0 0 0 var(--text); }
 
   /* avatar window */
   .avatar-col{ position:relative; }
   .halftone{
     position:absolute; bottom:-18px; right:-18px; width:96px; height:96px;
-    background-image:radial-gradient(var(--grey-light) 1.6px, transparent 1.6px);
+    background-image:radial-gradient(var(--card-bg) 1.6px, transparent 1.6px);
     background-size:11px 11px;
     z-index:0;
   }
   .avatar-frame{
     position:relative; z-index:1;
-    border:2px solid var(--ink); background:#fff;
-    box-shadow:8px 8px 0 var(--ink);
+    border:2px solid var(--bold); background:var(--card-bg);
+    box-shadow:8px 8px 0 var(--text);
   }
-  .avatar-chrome{ display:flex; gap:6px; padding:10px 12px; border-bottom:2px solid var(--ink); }
+  .avatar-chrome{ display:flex; gap:6px; padding:10px 12px; border-bottom:2px solid var(--bold); }
   .avatar-chrome span{ width:9px; height:9px; border-radius:50%; background:var(--line); display:block; }
   .avatar-chrome span:first-child{ background:var(--burgundy); }
   .avatar-body{ padding:28px; display:flex; justify-content:center; }
   .avatar-body svg{ width:100%; max-width:230px; height:auto; image-rendering:pixelated; }
   .avatar-caption{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--grey);
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--bold);
     text-align:center; padding:0 16px 18px;
   }
 
   /* ---------- SECTION SCAFFOLDING ---------- */
-  section{ padding:72px 0; border-bottom:1px solid var(--line); }
-  section:last-of-type{ border-bottom:none; }
+  section{ padding:72px 0; }
 
   .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:40px; }
   .section-head .mark{ width:10px; height:10px; background:var(--burgundy); flex-shrink:0; }
-  .section-head h2{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:26px; }
+  .section-head h2{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:26px; color:var(--bold); }
 
   /* ---------- ABOUT ---------- */
   .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; }
-  .about-grid p{ max-width:58ch; color:#3a3a3a; margin-bottom:18px; }
+  .about-grid p{ max-width:58ch; color:var(--text); margin-bottom:18px; }
   .facts{ padding:24px; font-family:'IBM Plex Mono', monospace; font-size:14px; }
   .facts dl{ display:grid; grid-template-columns:auto 1fr; gap:10px 18px; }
-  .facts dt{ color:var(--grey); }
-  .facts dd{ color:var(--ink); }
+  .facts dt{ color:var(--bold); }
+  .facts dd{ color:var(--text); }
 
-  /* ---------- WORK (window cards) ---------- */
+  /* ---------- WORK (window cards with image thumbnails) ---------- */
   .work-card{
     text-decoration:none; color:inherit; display:block;
-    margin-bottom:24px;
+    margin-bottom:28px;
     transition:transform .12s ease, box-shadow .12s ease;
   }
   .work-card:last-child{ margin-bottom:0; }
   .work-card:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--burgundy); }
-  .work-chrome{ display:flex; align-items:center; gap:6px; padding:9px 14px; border-bottom:2px solid var(--ink); }
+  .work-chrome{ display:flex; align-items:center; gap:6px; padding:9px 14px; border-bottom:2px solid var(--bold); }
   .work-chrome span.dot{ width:8px; height:8px; border-radius:50%; background:var(--line); display:block; }
   .work-chrome span.dot:first-child{ background:var(--burgundy); }
-  .work-file{ margin-left:auto; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--grey); }
+  .work-file{ margin-left:auto; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--bold); }
+  .work-thumb{ width:100%; display:block; border-bottom:2px solid var(--bold); }
   .work-card-body{ padding:22px 24px; }
   .work-card-top{
     display:flex; justify-content:space-between; align-items:baseline;
     font-family:'IBM Plex Mono', monospace; font-size:12.5px; margin-bottom:10px;
   }
-  .work-year{ color:var(--grey); }
+  .work-year{ color:var(--bold); }
   .work-tags{ color:var(--burgundy); white-space:nowrap; }
-  .work-title{ font-size:18px; font-weight:500; margin-bottom:8px; }
-  .work-desc{ color:var(--grey); font-size:14.5px; max-width:58ch; }
+  .work-title{ font-size:18px; font-weight:500; margin-bottom:8px; color:var(--text); }
+  .work-desc{ color:var(--text); font-size:14.5px; max-width:58ch; }
   .work-card:hover .work-title{ color:var(--burgundy); }
 
-  /* ---------- NOW ---------- */
-  .now-box{ padding:28px 32px; display:flex; gap:20px; }
-  .now-box .now-mark{ font-family:'IBM Plex Mono', monospace; color:var(--burgundy); font-size:14px; flex-shrink:0; }
-  .now-box ul{ list-style:none; }
-  .now-box li{ position:relative; padding-left:18px; margin-bottom:10px; color:#3a3a3a; }
-  .now-box li::before{
-    content:""; position:absolute; left:0; top:9px; width:6px; height:6px; background:var(--grey-light);
+  /* ---------- NOW (three boxes) ---------- */
+  .now-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+  .now-card{ padding:22px 24px; }
+  .now-label{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600;
+    color:var(--burgundy); margin-bottom:10px;
   }
-  .now-updated{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--grey); margin-top:16px; }
+  .now-card p{ color:var(--text); font-size:14.5px; }
+  .now-updated{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--bold);
+    margin-top:20px;
+  }
 
   /* ---------- AWARDS ---------- */
   .awards-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
   .award-card{ padding:20px 22px; }
-  .award-title{ font-weight:500; font-size:15.5px; margin-bottom:4px; }
-  .award-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--grey); }
+  .award-title{ font-weight:500; font-size:15.5px; margin-bottom:4px; color:var(--text); }
+  .award-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--bold); }
   .placeholder-note{
     font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--burgundy);
     margin-top:16px;
@@ -184,22 +205,22 @@
   /* ---------- PUBLICATIONS ---------- */
   .pub-card{ padding:22px 24px; margin-bottom:16px; }
   .pub-card:last-child{ margin-bottom:0; }
-  .pub-title{ font-weight:500; font-size:15.5px; margin-bottom:4px; }
-  .pub-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--grey); }
+  .pub-title{ font-weight:500; font-size:15.5px; margin-bottom:4px; color:var(--text); }
+  .pub-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--bold); }
   .pub-link{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--burgundy); text-decoration:none; }
   .pub-link:hover{ text-decoration:underline; }
 
   /* ---------- CONTACT / FOOTER ---------- */
   footer{ padding:72px 0 48px; }
   .contact-grid{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px; }
-  footer h2{ font-family:'IBM Plex Mono', monospace; font-size:30px; max-width:14ch; line-height:1.25; }
+  footer h2{ font-family:'IBM Plex Mono', monospace; font-size:30px; max-width:14ch; line-height:1.25; color:var(--bold); }
   .contact-links{ display:flex; flex-direction:column; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:15px; }
   .contact-links a{ text-decoration:none; }
   .contact-links a:hover{ color:var(--burgundy); }
   .foot-bottom{
-    margin-top:56px; padding-top:20px; border-top:1px solid var(--line);
+    margin-top:56px; padding-top:20px; border-top:2px solid var(--bold);
     display:flex; justify-content:space-between; font-family:'IBM Plex Mono', monospace;
-    font-size:12px; color:var(--grey); flex-wrap:wrap; gap:10px;
+    font-size:12px; color:var(--bold); flex-wrap:wrap; gap:10px;
   }
 
   @media (max-width:760px){
@@ -207,6 +228,7 @@
     .avatar-body svg{ max-width:190px; }
     .about-grid{ grid-template-columns:1fr; }
     .awards-grid{ grid-template-columns:1fr; }
+    .now-grid{ grid-template-columns:1fr; }
     .nav-links{ display:none; }
     footer h2{ max-width:none; }
     .halftone{ display:none; }
@@ -219,6 +241,31 @@
 </style>
 </head>
 <body>
+
+<!--
+  HOW TO EDIT THIS PAGE (quick guide for future-you)
+  ----------------------------------------------------
+  1. TEXT: just find the sentence in the HTML below and type over it. Everything
+     visible on the page is plain text between tags like <p>...</p> or <h2>...</h2>.
+
+  2. COLORS: all controlled from the ":root{ ... }" block at the very top of the
+     <style> section. Change --bg-a / --bg-b / --bold / --burgundy there and the
+     whole site updates.
+
+  3. PROJECT IMAGES: each project card has a line like:
+        <img class="work-thumb" src="images/sysbio_cadd.png" alt="...">
+     To swap a placeholder for a real image:
+        a) put your image file in the "images" folder next to this index.html file
+        b) either (i) name your file exactly the same as the placeholder
+           (e.g. "sysbio_cadd.png") and it will just replace it automatically, or
+           (ii) name it whatever you want and change the text inside src="..."
+           to match your filename, e.g. src="images/my_volcano_plot.png"
+     Keep images roughly 640x360 (a wide rectangle) so they line up nicely.
+
+  4. SECTIONS: each section of the page is wrapped in a <section id="..."> tag.
+     You can reorder whole sections by cutting and pasting the block between
+     <section ...> and </section> to a new position.
+-->
 
 <header>
   <nav class="wrap">
@@ -234,7 +281,7 @@
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero band-a">
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">&lt;nourine.sabry/&gt;<span class="cursor"></span></p>
@@ -310,7 +357,7 @@
   </div>
 </section>
 
-<section id="about">
+<section id="about" class="band-b">
   <div class="wrap about-grid">
     <div>
       <div class="section-head"><span class="mark"></span><h2>about</h2></div>
@@ -329,13 +376,14 @@
   </div>
 </section>
 
-<section id="work">
+<section id="work" class="band-a">
   <div class="wrap">
     <div class="section-head"><span class="mark"></span><h2>work</h2></div>
     <div class="work-list">
 
       <a class="work-card card-block" href="https://github.com/Nourine-Sabry/SysBio_CADD_Internship" target="_blank" rel="noopener">
         <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">sysbio_cadd_internship.md</span></div>
+        <img class="work-thumb" src="images/sysbio_cadd.png" alt="Systems Biology & CADD Internship thumbnail">
         <div class="work-card-body">
           <div class="work-card-top"><span class="work-year">2026</span><span class="work-tags">instructor · BRIC centre →</span></div>
           <div class="work-title">Systems Biology &amp; CADD Internship</div>
@@ -345,6 +393,7 @@
 
       <a class="work-card card-block" href="https://github.com/Nourine-Sabry/PDAC_Integrative_Transcriptomics" target="_blank" rel="noopener">
         <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">pdac_transcriptomics.R</span></div>
+        <img class="work-thumb" src="images/pdac_transcriptomics.png" alt="PDAC Integrative Transcriptomics thumbnail">
         <div class="work-card-body">
           <div class="work-card-top"><span class="work-year">2025</span><span class="work-tags">bachelor's thesis →</span></div>
           <div class="work-title">PDAC Integrative Transcriptomics</div>
@@ -354,6 +403,7 @@
 
       <a class="work-card card-block" href="https://github.com/Nourine-Sabry/SMOC2_fibrosis_RNAseq" target="_blank" rel="noopener">
         <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">smoc2_deseq2.R</span></div>
+        <img class="work-thumb" src="images/smoc2_fibrosis.png" alt="SMOC2 Fibrosis RNA-seq thumbnail">
         <div class="work-card-body">
           <div class="work-card-top"><span class="work-year">2025</span><span class="work-tags">R · RNA-seq →</span></div>
           <div class="work-title">SMOC2 Fibrosis RNA-seq</div>
@@ -363,6 +413,7 @@
 
       <a class="work-card card-block" href="https://github.com/Nourine-Sabry/Brain-Tumor-Classification_CBIO313-CourseProject" target="_blank" rel="noopener">
         <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">brain_tumor_cnn.ipynb</span></div>
+        <img class="work-thumb" src="images/brain_tumor.png" alt="Brain Tumor Classification thumbnail">
         <div class="work-card-body">
           <div class="work-card-top"><span class="work-year">2025</span><span class="work-tags">deep learning →</span></div>
           <div class="work-title">Brain Tumor Classification</div>
@@ -372,6 +423,7 @@
 
       <a class="work-card card-block" href="https://github.com/Nourine-Sabry/Bioinformatics-CompBio_resources" target="_blank" rel="noopener">
         <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">resources.md</span></div>
+        <img class="work-thumb" src="images/compbio_resources.png" alt="Bioinformatics & CompBio Resources thumbnail">
         <div class="work-card-body">
           <div class="work-card-top"><span class="work-year">ongoing</span><span class="work-tags">resource hub →</span></div>
           <div class="work-title">Bioinformatics &amp; CompBio Resources</div>
@@ -383,24 +435,28 @@
   </div>
 </section>
 
-<section id="now">
+<section id="now" class="band-b">
   <div class="wrap">
     <div class="section-head"><span class="mark"></span><h2>now</h2></div>
-    <div class="now-box card-block">
-      <span class="now-mark">$</span>
-      <div>
-        <ul>
-          <li>Just wrapped up instructing the Systems Biology &amp; CADD internship at Nile University's BRIC centre — mentored two interns from network biology through to molecular docking.</li>
-          <li>Continuing as Teaching Assistant, teaching Omics data analysis, computer-aided drug discovery, and algorithmic bioinformatics.</li>
-          <li>Next up: [tell me what's on deck and I'll add it here]</li>
-        </ul>
-        <p class="now-updated">last updated: September 2026</p>
+    <div class="now-grid">
+      <div class="now-card card-block">
+        <div class="now-label">Just wrapped up</div>
+        <p>Instructing the Systems Biology &amp; CADD internship at Nile University's BRIC centre — mentored two interns from network biology through to molecular docking.</p>
+      </div>
+      <div class="now-card card-block">
+        <div class="now-label">Currently</div>
+        <p>Teaching Assistant at Nile University, teaching Omics data analysis, computer-aided drug discovery, and algorithmic bioinformatics.</p>
+      </div>
+      <div class="now-card card-block">
+        <div class="now-label">Next up</div>
+        <p>[tell me what's on deck and I'll add it here]</p>
       </div>
     </div>
+    <p class="now-updated">last updated: September 2026</p>
   </div>
 </section>
 
-<section id="awards">
+<section id="awards" class="band-a">
   <div class="wrap">
     <div class="section-head"><span class="mark"></span><h2>awards</h2></div>
     <div class="awards-grid">
@@ -417,7 +473,7 @@
   </div>
 </section>
 
-<section id="publications">
+<section id="publications" class="band-b">
   <div class="wrap">
     <div class="section-head"><span class="mark"></span><h2>publications</h2></div>
     <div class="pub-card card-block">
@@ -428,7 +484,7 @@
   </div>
 </section>
 
-<footer id="contact">
+<footer id="contact" class="band-a">
   <div class="wrap">
     <div class="contact-grid">
       <h2>Let's talk about something interesting.</h2>
