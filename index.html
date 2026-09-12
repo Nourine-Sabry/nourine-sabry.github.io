@@ -155,59 +155,320 @@
   .facts dt{ color:var(--bold); }
   .facts dd{ color:var(--text); }
 
-  /* ---------- WORK (window cards with image thumbnails) ---------- */
+  /* ---------- EXPERIENCE ---------- */
+  
+  .experience-list{
+    display:flex;
+    flex-direction:column;
+  }
+  
+  .experience-item{
+    padding:28px 0;
+    border-top:2px solid var(--bold);
+  }
+  
+  .experience-item:last-child{
+    border-bottom:2px solid var(--bold);
+  }
+  
+  .experience-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:32px;
+    margin-bottom:20px;
+  }
+  
+  .experience-header h3{
+    font-size:20px;
+    font-weight:500;
+    color:var(--text);
+    margin-bottom:3px;
+  }
+  
+  .experience-org{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--burgundy);
+  }
+  
+  .experience-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--bold);
+    white-space:nowrap;
+  }
+  
+  /* playing-card bullets */
+  
+  .experience-points{
+    list-style:none;
+    margin:0;
+    max-width:82ch;
+    color:var(--text);
+    font-size:14.5px;
+  }
+  
+  .experience-points li{
+    position:relative;
+    margin-bottom:14px;
+    padding-left:42px;
+    min-height:32px;
+  }
+  
+  .experience-points li:last-child{
+    margin-bottom:0;
+  }
+  
+  .experience-points li::before{
+    content:"A ♥";
+    position:absolute;
+    left:0;
+    top:0;
+    width:25px;
+    height:31px;
+  
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  
+    background:var(--card-bg);
+    border:1.5px solid var(--bold);
+    box-shadow:2px 2px 0 var(--text);
+  
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    font-weight:600;
+    color:var(--burgundy);
+  
+    transform:rotate(-3deg);
+  }
+  
+  .experience-points li:nth-child(2)::before{
+    content:"K ♠";
+    transform:rotate(2deg);
+  }
+  
+  .experience-points li:nth-child(3)::before{
+    content:"Q ♦";
+    transform:rotate(-2deg);
+  }
+  
+  .experience-points li:nth-child(4)::before{
+    content:"J ♣";
+    transform:rotate(3deg);
+  }
+  /* ---------- PROJECTS (horizontal cards with image thumbnails) ---------- */
+  
+  .work-list{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+  
   .work-card{
-    text-decoration:none; color:inherit; display:block;
-    margin-bottom:28px;
+    text-decoration:none;
+    color:inherit;
+    display:block;
     transition:transform .12s ease, box-shadow .12s ease;
   }
-  .work-card:last-child{ margin-bottom:0; }
-  .work-card:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--burgundy); }
-  .work-chrome{ display:flex; align-items:center; gap:6px; padding:9px 14px; border-bottom:2px solid var(--bold); }
-  .work-chrome span.dot{ width:8px; height:8px; border-radius:50%; background:var(--line); display:block; }
-  .work-chrome span.dot:first-child{ background:var(--burgundy); }
-  .work-file{ margin-left:auto; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--bold); }
-  .work-thumb{ width:100%; display:block; border-bottom:2px solid var(--bold); }
-  .work-card-body{ padding:22px 24px; }
+  
+  .work-card:hover{
+    transform:translate(-3px,-3px);
+    box-shadow:9px 9px 0 var(--burgundy);
+  }
+  
+  .work-chrome{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:9px 14px;
+    border-bottom:2px solid var(--bold);
+  }
+  
+  .work-chrome span.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--line);
+    display:block;
+  }
+  
+  .work-chrome span.dot:first-child{
+    background:var(--burgundy);
+  }
+  
+  .work-file{
+    margin-left:auto;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--bold);
+  }
+  
+  /* 50 / 50 project layout */
+  .work-card-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:250px;
+  }
+  
+  .work-card-body{
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  
+  .work-thumb-wrap{
+    order:2;
+    min-height:250px;
+    border-left:2px solid var(--bold);
+    overflow:hidden;
+  }
+  
+  .work-thumb{
+    width:100%;
+    height:100%;
+    min-height:250px;
+    object-fit:cover;
+    display:block;
+  }
+  
   .work-card-top{
-    display:flex; justify-content:space-between; align-items:baseline;
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px; margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    margin-bottom:12px;
   }
-  .work-year{ color:var(--bold); }
-  .work-tags{ color:var(--burgundy); white-space:nowrap; }
-  .work-title{ font-size:18px; font-weight:500; margin-bottom:8px; color:var(--text); }
-  .work-desc{ color:var(--text); font-size:14.5px; max-width:58ch; }
-  .work-card:hover .work-title{ color:var(--burgundy); }
-
-  /* ---------- NOW (three boxes) ---------- */
-  .now-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
-  .now-card{ padding:22px 24px; }
-  .now-label{
-    font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600;
-    color:var(--burgundy); margin-bottom:10px;
+  
+  .work-year{
+    color:var(--bold);
   }
-  .now-card p{ color:var(--text); font-size:14.5px; }
-  .now-updated{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--bold);
-    margin-top:20px;
+  
+  .work-tags{
+    color:var(--burgundy);
+    white-space:nowrap;
   }
-
+  
+  .work-title{
+    font-size:20px;
+    font-weight:500;
+    margin-bottom:10px;
+    color:var(--text);
+  }
+  
+  .work-desc{
+    color:var(--text);
+    font-size:14.5px;
+    max-width:52ch;
+  }
+  
+  .work-card:hover .work-title{
+    color:var(--burgundy);
+  }
   /* ---------- AWARDS ---------- */
-  .awards-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .award-card{ padding:20px 22px; }
-  .award-title{ font-weight:500; font-size:15.5px; margin-bottom:4px; color:var(--text); }
-  .award-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--bold); }
-  .placeholder-note{
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--burgundy);
-    margin-top:16px;
+  
+  .awards-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  
+  .award-card{
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  
+  .award-card:hover{
+    transform:translate(-3px,-3px);
+    box-shadow:9px 9px 0 var(--burgundy);
+  }
+  
+  .award-thumb{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    display:block;
+    border-bottom:2px solid var(--bold);
+  }
+  
+  .award-body{
+    padding:18px 20px 20px;
+  }
+  
+  .award-title{
+    font-weight:500;
+    font-size:16px;
+    line-height:1.35;
+    margin-bottom:8px;
+    color:var(--text);
+  }
+  
+  .award-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--bold);
+    line-height:1.5;
+  }
+  
+  .award-card:hover .award-title{
+    color:var(--burgundy);
   }
 
+  /* ---------- NOW ---------- */
+  
+  .now-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  
+  .now-card{
+    padding:22px;
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  
+  .now-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--burgundy);
+    margin-bottom:20px;
+    text-transform:lowercase;
+  }
+  
+  .now-card p{
+    font-size:15px;
+    color:var(--text);
+  }
+  
+  .now-updated{
+    margin-top:28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--bold);
+  }
+  
   /* ---------- PUBLICATIONS ---------- */
   .pub-card{ padding:22px 24px; margin-bottom:16px; }
   .pub-card:last-child{ margin-bottom:0; }
   .pub-title{ font-weight:500; font-size:15.5px; margin-bottom:4px; color:var(--text); }
   .pub-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--bold); }
-  .pub-link{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--burgundy); text-decoration:none; }
+  .pub-link{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12.5px;
+  color:var(--burgundy);
+  text-decoration:none;
+  margin-top:16px;
+  display:inline-block;
+}
   .pub-link:hover{ text-decoration:underline; }
 
   /* ---------- CONTACT / FOOTER ---------- */
@@ -223,15 +484,72 @@
     font-size:12px; color:var(--bold); flex-wrap:wrap; gap:10px;
   }
 
-  @media (max-width:760px){
-    .hero-grid{ grid-template-columns:1fr; }
-    .avatar-body svg{ max-width:190px; }
-    .about-grid{ grid-template-columns:1fr; }
-    .awards-grid{ grid-template-columns:1fr; }
-    .now-grid{ grid-template-columns:1fr; }
-    .nav-links{ display:none; }
-    footer h2{ max-width:none; }
-    .halftone{ display:none; }
+    @media (max-width:760px){
+  
+    .hero-grid{
+      grid-template-columns:1fr;
+    }
+  
+    .avatar-body svg{
+      max-width:190px;
+    }
+  
+    .about-grid{
+      grid-template-columns:1fr;
+    }
+  
+    .work-card-content{
+      grid-template-columns:1fr;
+    }
+  
+    .work-thumb-wrap{
+      order:0;
+      border-left:none;
+      border-bottom:2px solid var(--bold);
+      min-height:0;
+    }
+  
+    .work-thumb{
+      height:220px;
+      min-height:0;
+    }
+  
+    .work-card-body{
+      padding:22px;
+    }
+  
+    .experience-header{
+      flex-direction:column;
+      gap:6px;
+    }
+  
+    .experience-date{
+      order:-1;
+    }
+  
+    .awards-grid{
+      grid-template-columns:1fr;
+    }
+  
+    .award-thumb{
+      height:190px;
+    }
+  
+    .now-grid{
+      grid-template-columns:1fr;
+    }
+  
+    .nav-links{
+      display:none;
+    }
+  
+    footer h2{
+      max-width:none;
+    }
+  
+    .halftone{
+      display:none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -272,7 +590,8 @@
     <div class="nav-mark"><span class="dot"></span>nourine.sabry</div>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
-      <li><a href="#work">work</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
       <li><a href="#now">now</a></li>
       <li><a href="#awards">awards</a></li>
       <li><a href="#publications">publications</a></li>
@@ -288,7 +607,7 @@
       <h1>Nourine turns messy biology into <span>clean code</span>.</h1>
       <p class="lede">Bioinformatician and Teaching Assistant at Nile University, working across systems biology, computer-aided drug discovery, and transcriptomics — mostly in R, Python, and Cytoscape.</p>
       <div class="btn-row">
-        <a href="#work" class="btn primary">see the work</a>
+        <a href="#projects" class="btn primary">see my projects</a>
         <a href="#contact" class="btn ghost">say hello</a>
       </div>
     </div>
@@ -376,58 +695,233 @@
   </div>
 </section>
 
-<section id="work" class="band-a">
+<section id="experience" class="band-a">
   <div class="wrap">
-    <div class="section-head"><span class="mark"></span><h2>work</h2></div>
+    <div class="section-head">
+      <span class="mark"></span>
+      <h2>experience</h2>
+    </div>
+
+    <div class="experience-list">
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div>
+            <h3>Bioinformatics Teaching Assistant</h3>
+            <p class="experience-org">Nile University</p>
+          </div>
+          <span class="experience-date">2026–present</span>
+        </div>
+
+        <ul class="experience-points">
+          <li>Teach practical bioinformatics and computational biology courses, with a focus on omics data analysis and computer-aided drug discovery.</li>
+          <li>Guide students through transcriptomics workflows, including data preprocessing, differential expression, functional enrichment, and visualization using R and Bioconductor.</li>
+          <li>Teach computational drug discovery workflows using tools including PyMOL, AutoDock/PyRx, and structure- and ligand-based approaches.</li>
+          <li>Develop laboratory exercises, quizzes, project milestones, and supporting learning resources for undergraduate students.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <div>
+            <h3>Systems Biology &amp; CADD Internship Instructor</h3>
+            <p class="experience-org">Biotechnology Research &amp; Innovation Centre (BRIC), Nile University</p>
+          </div>
+          <span class="experience-date">2026</span>
+        </div>
+
+        <ul class="experience-points">
+          <li>Designed and instructed a practical internship covering systems biology, biological network analysis, and computer-aided drug discovery.</li>
+          <li>Introduced interns to STRING, Cytoscape, cytoHubba, MCODE, Reactome, PyMOL, Discovery Studio, and PyRx.</li>
+          <li>Guided interns from network-based target identification through protein structure analysis and molecular docking.</li>
+          <li>Mentored interns through the development of a final computational biology project.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+  
+<section id="projects" class="band-b">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mark"></span>
+      <h2>projects</h2>
+    </div>
+
     <div class="work-list">
 
-      <a class="work-card card-block" href="https://github.com/Nourine-Sabry/SysBio_CADD_Internship" target="_blank" rel="noopener">
-        <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">sysbio_cadd_internship.md</span></div>
-        <img class="work-thumb" src="images/sysbio_cadd.png" alt="Systems Biology & CADD Internship thumbnail">
-        <div class="work-card-body">
-          <div class="work-card-top"><span class="work-year">2026</span><span class="work-tags">instructor · BRIC centre →</span></div>
-          <div class="work-title">Systems Biology &amp; CADD Internship</div>
-          <div class="work-desc">Designed and taught a nine-session internship on systems biology and computer-aided drug discovery for the BRIC centre at Nile University, mentoring two interns through to a capstone project.</div>
+      <a class="work-card card-block"
+         href="https://github.com/Nourine-Sabry/PDAC_Integrative_Transcriptomics"
+         target="_blank"
+         rel="noopener">
+
+        <div class="work-chrome">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="work-file">pdac_transcriptomics.R</span>
+        </div>
+
+        <div class="work-card-content">
+          <div class="work-card-body">
+            <div class="work-card-top">
+              <span class="work-year">2025</span>
+              <span class="work-tags">bachelor's thesis →</span>
+            </div>
+
+            <div class="work-title">PDAC Integrative Transcriptomics</div>
+
+            <div class="work-desc">
+              Integrated bulk and single-cell transcriptomic datasets to investigate pancreatic ductal adenocarcinoma, including preprocessing, normalization, batch correction, differential expression, functional enrichment, and survival analysis.
+            </div>
+          </div>
+
+          <div class="work-thumb-wrap">
+            <img class="work-thumb"
+                 src="images/pdac_transcriptomics.png"
+                 alt="PDAC Integrative Transcriptomics project">
+          </div>
         </div>
       </a>
 
-      <a class="work-card card-block" href="https://github.com/Nourine-Sabry/PDAC_Integrative_Transcriptomics" target="_blank" rel="noopener">
-        <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">pdac_transcriptomics.R</span></div>
-        <img class="work-thumb" src="images/pdac_transcriptomics.png" alt="PDAC Integrative Transcriptomics thumbnail">
-        <div class="work-card-body">
-          <div class="work-card-top"><span class="work-year">2025</span><span class="work-tags">bachelor's thesis →</span></div>
-          <div class="work-title">PDAC Integrative Transcriptomics</div>
-          <div class="work-desc">Bachelor's thesis integrating multiple transcriptomic datasets to study pancreatic ductal adenocarcinoma (PDAC).</div>
+
+      <a class="work-card card-block"
+         href="https://github.com/Nourine-Sabry/SysBio_CADD_Internship"
+         target="_blank"
+         rel="noopener">
+
+        <div class="work-chrome">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="work-file">sysbio_cadd_internship.md</span>
+        </div>
+
+        <div class="work-card-content">
+          <div class="work-card-body">
+            <div class="work-card-top">
+              <span class="work-year">2026</span>
+              <span class="work-tags">BRIC · instructor →</span>
+            </div>
+
+            <div class="work-title">Systems Biology &amp; CADD Internship</div>
+
+            <div class="work-desc">
+              Designed and taught a practical internship covering biological network analysis and computer-aided drug discovery, guiding interns from systems-level target identification through structural analysis and molecular docking.
+            </div>
+          </div>
+
+          <div class="work-thumb-wrap">
+            <img class="work-thumb"
+                 src="images/sysbio_cadd.png"
+                 alt="Systems Biology and CADD Internship">
+          </div>
         </div>
       </a>
 
-      <a class="work-card card-block" href="https://github.com/Nourine-Sabry/SMOC2_fibrosis_RNAseq" target="_blank" rel="noopener">
-        <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">smoc2_deseq2.R</span></div>
-        <img class="work-thumb" src="images/smoc2_fibrosis.png" alt="SMOC2 Fibrosis RNA-seq thumbnail">
-        <div class="work-card-body">
-          <div class="work-card-top"><span class="work-year">2025</span><span class="work-tags">R · RNA-seq →</span></div>
-          <div class="work-title">SMOC2 Fibrosis RNA-seq</div>
-          <div class="work-desc">Transcriptomic analysis of GSE85209 using DESeq2, with downstream functional enrichment analysis.</div>
+
+      <a class="work-card card-block"
+         href="https://github.com/Nourine-Sabry/SMOC2_fibrosis_RNAseq"
+         target="_blank"
+         rel="noopener">
+
+        <div class="work-chrome">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="work-file">smoc2_deseq2.R</span>
+        </div>
+
+        <div class="work-card-content">
+          <div class="work-card-body">
+            <div class="work-card-top">
+              <span class="work-year">2025</span>
+              <span class="work-tags">R · RNA-seq →</span>
+            </div>
+
+            <div class="work-title">SMOC2 Fibrosis RNA-seq</div>
+
+            <div class="work-desc">
+              Transcriptomic analysis of GSE85209 using DESeq2, followed by differential expression analysis and downstream functional enrichment to investigate gene-level changes associated with fibrosis.
+            </div>
+          </div>
+
+          <div class="work-thumb-wrap">
+            <img class="work-thumb"
+                 src="images/smoc2_fibrosis.png"
+                 alt="SMOC2 Fibrosis RNA-seq project">
+          </div>
         </div>
       </a>
 
-      <a class="work-card card-block" href="https://github.com/Nourine-Sabry/Brain-Tumor-Classification_CBIO313-CourseProject" target="_blank" rel="noopener">
-        <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">brain_tumor_cnn.ipynb</span></div>
-        <img class="work-thumb" src="images/brain_tumor.png" alt="Brain Tumor Classification thumbnail">
-        <div class="work-card-body">
-          <div class="work-card-top"><span class="work-year">2025</span><span class="work-tags">deep learning →</span></div>
-          <div class="work-title">Brain Tumor Classification</div>
-          <div class="work-desc">Classified brain tumors from MRI images using deep learning, for a Data Mining &amp; Machine Learning course project.</div>
+
+      <a class="work-card card-block"
+         href="https://github.com/Nourine-Sabry/Brain-Tumor-Classification_CBIO313-CourseProject"
+         target="_blank"
+         rel="noopener">
+
+        <div class="work-chrome">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="work-file">brain_tumor_cnn.ipynb</span>
+        </div>
+
+        <div class="work-card-content">
+          <div class="work-card-body">
+            <div class="work-card-top">
+              <span class="work-year">2025</span>
+              <span class="work-tags">deep learning →</span>
+            </div>
+
+            <div class="work-title">Brain Tumor Classification</div>
+
+            <div class="work-desc">
+              Classified brain tumors from MRI images using a deep learning approach developed as part of a Data Mining &amp; Machine Learning course project.
+            </div>
+          </div>
+
+          <div class="work-thumb-wrap">
+            <img class="work-thumb"
+                 src="images/brain_tumor.png"
+                 alt="Brain Tumor Classification project">
+          </div>
         </div>
       </a>
 
-      <a class="work-card card-block" href="https://github.com/Nourine-Sabry/Bioinformatics-CompBio_resources" target="_blank" rel="noopener">
-        <div class="work-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="work-file">resources.md</span></div>
-        <img class="work-thumb" src="images/compbio_resources.png" alt="Bioinformatics & CompBio Resources thumbnail">
-        <div class="work-card-body">
-          <div class="work-card-top"><span class="work-year">ongoing</span><span class="work-tags">resource hub →</span></div>
-          <div class="work-title">Bioinformatics &amp; CompBio Resources</div>
-          <div class="work-desc">An ever-growing, curated list of courses, tutorials, and learning material across bioinformatics and computational biology.</div>
+
+      <a class="work-card card-block"
+         href="https://github.com/Nourine-Sabry/Bioinformatics-CompBio_resources"
+         target="_blank"
+         rel="noopener">
+
+        <div class="work-chrome">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="work-file">resources.md</span>
+        </div>
+
+        <div class="work-card-content">
+          <div class="work-card-body">
+            <div class="work-card-top">
+              <span class="work-year">ongoing</span>
+              <span class="work-tags">resource hub →</span>
+            </div>
+
+            <div class="work-title">Bioinformatics &amp; CompBio Resources</div>
+
+            <div class="work-desc">
+              A curated collection of courses, tutorials, tools, and learning material for bioinformatics and computational biology.
+            </div>
+          </div>
+
+          <div class="work-thumb-wrap">
+            <img class="work-thumb"
+                 src="images/compbio_resources.png"
+                 alt="Bioinformatics and Computational Biology Resources">
+          </div>
         </div>
       </a>
 
@@ -435,7 +929,7 @@
   </div>
 </section>
 
-<section id="now" class="band-b">
+<section id="now" class="band-a">
   <div class="wrap">
     <div class="section-head"><span class="mark"></span><h2>now</h2></div>
     <div class="now-grid">
@@ -458,29 +952,90 @@
 
 <section id="awards" class="band-a">
   <div class="wrap">
-    <div class="section-head"><span class="mark"></span><h2>awards</h2></div>
-    <div class="awards-grid">
-      <div class="award-card card-block">
-        <div class="award-title">[Award or honor name]</div>
-        <div class="award-meta">[issuer] · [year]</div>
-      </div>
-      <div class="award-card card-block">
-        <div class="award-title">[Award or honor name]</div>
-        <div class="award-meta">[issuer] · [year]</div>
-      </div>
+    <div class="section-head">
+      <span class="mark"></span>
+      <h2>awards</h2>
     </div>
-    <p class="placeholder-note">send me the names, issuers, and years and I'll drop them in — including anything from Credly.</p>
+
+    <div class="awards-grid">
+
+      <a class="award-card card-block"
+         href="YOUR_UGRF21_LINK"
+         target="_blank"
+         rel="noopener">
+
+        <img class="award-thumb"
+             src="images/ugrf21.png"
+             alt="21st Undergraduate Research Forum award">
+
+        <div class="award-body">
+          <div class="award-title">1st Place — 21st Undergraduate Research Forum</div>
+          <div class="award-meta">Nile University · 2025</div>
+          <div class="award-meta">PGAM1 drug repurposing project</div>
+        </div>
+
+      </a>
+
+      <a class="award-card card-block"
+         href="YOUR_UGRF15_LINK"
+         target="_blank"
+         rel="noopener">
+
+        <img class="award-thumb"
+             src="images/ugrf15.png"
+             alt="15th Undergraduate Research Forum award">
+
+        <div class="award-body">
+          <div class="award-title">2nd Place — 15th Undergraduate Research Forum</div>
+          <div class="award-meta">Nile University · 2023</div>
+          <div class="award-meta">Histology research project</div>
+        </div>
+
+      </a>
+
+      <a class="award-card card-block"
+         href="YOUR_SUMMA_LINK"
+         target="_blank"
+         rel="noopener">
+
+        <img class="award-thumb"
+             src="images/summa.png"
+             alt="Summa Cum Laude graduation honor">
+
+        <div class="award-body">
+          <div class="award-title">Summa Cum Laude</div>
+          <div class="award-meta">B.Sc. Biotechnology · 2025</div>
+          <div class="award-meta">Bioinformatics specialization · Nile University</div>
+        </div>
+
+      </a>
+
+    </div>
   </div>
 </section>
 
 <section id="publications" class="band-b">
   <div class="wrap">
-    <div class="section-head"><span class="mark"></span><h2>publications</h2></div>
-    <div class="pub-card card-block">
-      <div class="pub-title">[Publication or preprint title]</div>
-      <div class="pub-meta">[journal / venue] · [year]</div>
+    <div class="section-head">
+      <span class="mark"></span>
+      <h2>publications</h2>
     </div>
-    <p class="placeholder-note">send me titles, venues, and years (or DOIs) and I'll fill these in — your <a class="pub-link" href="https://orcid.org/0009-0000-9213-9701" target="_blank" rel="noopener">ORCID</a> is already linked below.</p>
+
+    <div class="pub-card card-block">
+      <div class="pub-title">
+        The Genetic Orchestra: Stress Responses and the Molecular Regulation of Plant Adaptation
+      </div>
+      <div class="pub-meta">
+        Stress Biology · Springer · 2024
+      </div>
+    </div>
+
+    <a class="pub-link"
+       href="https://orcid.org/0009-0000-9213-9701"
+       target="_blank"
+       rel="noopener">
+      more on ORCID ↗
+    </a>
   </div>
 </section>
 
