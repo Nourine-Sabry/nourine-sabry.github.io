@@ -429,8 +429,12 @@
   }
   
   .now-card{
+    padding:0;
+  }
+
+  .now-card-body{
     padding:22px;
-    min-height:170px;
+    min-height:148px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -458,11 +462,15 @@
   
   /* ---------- PUBLICATIONS ---------- */
 .pub-card{
-  padding:22px 24px;
+  padding:0;
   text-decoration:none;
   color:inherit;
   display:block;
   transition:transform .12s ease, box-shadow .12s ease;
+}
+
+.pub-card-body{
+  padding:22px 24px;
 }
 .pub-card:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--burgundy); }
 .pub-card:hover .pub-title{ color:var(--burgundy); }
@@ -942,18 +950,35 @@
     <div class="section-head"><span class="mark"></span><h2>now</h2></div>
     <div class="now-grid">
       <div class="now-card card-block">
-        <div class="now-label">Just wrapped up</div>
-        <p>Instructing the Systems Biology &amp; CADD internship at Nile University's BRIC centre.</p>
+        <div class="work-chrome">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="work-file">wrapped-up.log</span>
+        </div>
+        <div class="now-card-body">
+          <div class="now-label">Just wrapped up</div>
+          <p>Instructing the Systems Biology &amp; CADD internship at Nile University's BRIC centre.</p>
+        </div>
       </div>
       <div class="now-card card-block">
-        <div class="now-label">Currently</div>
-        <p>Teaching Next-generation sequencing analysis, Systems biology & modelling of biological networks, & Omics-II for the Fall '26 semester at Nile University.</p>
+        <div class="work-chrome">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="work-file">wrapped-up.log</span>
+        </div>
+        <div class="now-card-body">
+          <div class="now-label">currently.status</div>
+          <p>Teaching Next-generation sequencing analysis, Systems biology & modelling of biological networks, & Omics-II for the Fall '26 semester at Nile University.</p>
+        </div>
       </div>
       <div class="now-card card-block">
-        <div class="now-label">Next up</div>
-        <p>Hosting the African Biogenome Project regional workshop at Nile University.</p>
+        <div class="work-chrome">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="work-file">wrapped-up.log</span>
+        </div>
+        <div class="now-card-body">
+          <div class="now-label">next up.plan</div>
+          <p>Hosting the African Biogenome Project regional workshop at Nile University.</p>
+        </div>
       </div>
-    </div>
     <p class="now-updated">last updated: September 2026</p>
   </div>
 </section>
@@ -972,6 +997,11 @@
          target="_blank"
          rel="noopener">
 
+      <div class="work-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="work-file">ugrf21.jpg</span>
+      </div>
+        
         <img class="award-thumb"
              src="images/ugrf21.jpg"
              alt="21st Undergraduate Research Forum award">
@@ -989,6 +1019,11 @@
          target="_blank"
          rel="noopener">
 
+      <div class="work-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="work-file">ugrf15.jpg</span>
+      </div>
+        
         <img class="award-thumb"
              src="images/ugrf15.jpg"
              alt="15th Undergraduate Research Forum award">
@@ -1006,6 +1041,11 @@
          target="_blank"
          rel="noopener">
 
+      <div class="work-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="work-file">ugrf15.jpg</span>
+      </div>
+        
         <img class="award-thumb"
              src="images/sole.jpg"
              alt="SOLE group picture">
@@ -1033,11 +1073,17 @@
        href="https://doi.org/10.1007/s44154-024-00160-2"
        target="_blank"
        rel="noopener">
-      <div class="pub-title">
-        The Genetic Orchestra of Salicylic Acid in Plant Resilience to Climate Change Induced Abiotic Stress: Critical Review ↗
+      <div class="work-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="work-file">publication.bib</span>
       </div>
-      <div class="pub-meta">
-        Stress Biology · Springer · 2024
+      <div class="pub-card-body">
+        <div class="pub-title">
+          The Genetic Orchestra of Salicylic Acid in Plant Resilience to Climate Change Induced Abiotic Stress: Critical Review ↗
+        </div>
+        <div class="pub-meta">
+          Stress Biology · Springer · 2024
+        </div>
       </div>
     </a>
   </div>
@@ -1083,10 +1129,12 @@
 
 <script>
   const quotes = [
-    { text: "[placeholder quote one goes here]", author: "[author one]" },
-    { text: "[placeholder quote two goes here]", author: "[author two]" },
-    { text: "[placeholder quote three goes here]", author: "[author three]" },
-    { text: "[placeholder quote four goes here]", author: "[author four]" }
+    { text: "Your will shall decide your destiny.", author: "Charlotte Brontë" },
+    { text: "Nature takes away any faculty that is not used.", author: "William R. Inge" },
+    { text: "Never mistake activity for achievement.", author: "John Wooden" },
+    { text: "A goal is a dream with a deadline.", author: "Napoleon Hill" },
+    { text: "A ship is safe in harbor, but that's not what ships are for.", author: "John A. Shedd" },
+    { text: "Well done is better than well said.", author: "Benjamin Franklin" }
   ];
   let quoteIndex = 0;
   const quoteTextEl = document.getElementById('quoteText');
