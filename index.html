@@ -34,6 +34,7 @@
   html{ scroll-behavior:smooth; cursor:var(--cursor-ball) 16 16, auto; }
 
   a, button, .btn, .work-card{ cursor:var(--cursor-ball) 16 16, pointer; }
+  a:hover, button:hover{ cursor:var(--cursor-ball-hit) 16 16, pointer; }
 
   body{
     background:var(--bg-a);
@@ -133,14 +134,13 @@
   .avatar-chrome{ display:flex; gap:6px; padding:10px 12px; border-bottom:2px solid var(--bold); }
   .avatar-chrome span{ width:9px; height:9px; border-radius:50%; background:var(--line); display:block; }
   .avatar-chrome span:first-child{ background:var(--burgundy); }
-  .avatar-body{ padding:20px; display:flex; justify-content:center; }
+  .avatar-body{ padding:0; }
   .avatar-body img{
     width:100%;
-    max-width:260px;
     aspect-ratio:1 / 1;
     object-fit:cover;
     display:block;
-    border:2px solid var(--bold);
+    border:none;
   }
   .avatar-caption{
     font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--bold);
@@ -628,11 +628,11 @@
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">&lt;nourine.sabry/&gt;<span class="cursor"></span></p>
-      <h1>Nourine turns messy biology into <span>clean code</span>.</h1>
-      <p class="lede">Bioinformatician and Teaching Assistant at Nile University, working across systems biology, computer-aided drug discovery, and transcriptomics — mostly in R, Python, and Cytoscape.</p>
+      <h1>Nourine Sabry,<span>Bioinformatician</span>.</h1>
+      <p class="lede">Teaching Assistant at Nile University. I am a bioinformatician working across high-throughput data analysis, network biology, and computer-aided drug discovery.</p>
       <div class="btn-row">
-        <a href="#projects" class="btn primary">see my projects</a>
-        <a href="#contact" class="btn ghost">say hello</a>
+        <a href="#projects" class="btn primary">See my projects</a>
+        <a href="#contact" class="btn ghost">Say hello</a>
       </div>
     </div>
 
@@ -643,7 +643,6 @@
         <div class="avatar-body">
           <img src="images/avatar.png" alt="Nourine Sabry">
         </div>
-        <p class="avatar-caption">It's me!</p>
       </div>
     </div>
   </div>
@@ -653,7 +652,7 @@
   <div class="wrap about-grid">
     <div>
       <div class="section-head"><span class="mark"></span><h2>about</h2></div>
-      <p>I'm a bioinformatician and Teaching Assistant at Nile University, where I teach courses such as omics data analysis, computer-aided drug discovery, & network biology,. I graduated summa cum laude with a B.Sc. in Biotechnology, specializing in Bioinformatics, from Nile University in 2025.</p>
+      <p>I'm a bioinformatician and Teaching Assistant at Nile University, where I teach courses such as omics data analysis, computer-aided drug discovery, & network biology. I graduated summa cum laude with a B.Sc. in Biotechnology, specializing in Bioinformatics, from Nile University in 2025.</p>
       <p>My work sits at the intersection of biology & data analysis. I like projects that make me extract actionable biological insight from high-throughput data.</p>
     </div>
     <div class="facts card-block">
@@ -663,11 +662,11 @@
       </div>
       <div class="facts-body">
         <dl>
-          <dt>based in</dt><dd>Giza, Egypt</dd>
-          <dt>focused on</dt><dd>Bioinformatics</dd>
-          <dt>currently</dt><dd>Teaching Assistant, Nile University</dd>
-          <dt>tools</dt><dd>R · Python · Cytoscape · PyMOL · Bash/Linux command line</dd>
-          <dt>outside work</dt><dd>-</dd>
+          <dt>Based in</dt><dd>Giza, Egypt</dd>
+          <dt>Focused on</dt><dd>Bioinformatics & Biotechnology</dd>
+          <dt>Currently</dt><dd>Teaching Assistant, Nile University</dd>
+          <dt>Tools/Technologies</dt><dd>R · Python · Cytoscape · PyMOL · Bash/Linux command line</dd>
+          <dt>Research interests</dt><dd>Metabolic reprogramming in gastrointestinal cancers · The Warburg effect</dd>
         </dl>
       </div>
     </div>
@@ -677,7 +676,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="mark"></span>
-      <h2>experience</h2>
+      <h2>Experience</h2>
     </div>
 
     <div class="experience-list">
@@ -685,34 +684,31 @@
       <div class="experience-item">
         <div class="experience-header">
           <div>
-            <h3>Bioinformatics Teaching Assistant</h3>
+            <h3>Teaching Assistant</h3>
             <p class="experience-org">Nile University</p>
           </div>
           <span class="experience-date">2026–present</span>
         </div>
 
         <ul class="experience-points">
-          <li>Teach practical bioinformatics and computational biology courses, with a focus on omics data analysis and computer-aided drug discovery.</li>
-          <li>Guide students through transcriptomics workflows, including data preprocessing, differential expression, functional enrichment, and visualization using R and Bioconductor.</li>
-          <li>Teach computational drug discovery workflows using tools including PyMOL, AutoDock/PyRx, and structure- and ligand-based approaches.</li>
-          <li>Develop laboratory exercises, quizzes, project milestones, and supporting learning resources for undergraduate students.</li>
+          <li>Teaching undergraduate bioinformatics courses including Computer-Aided Drug Discovery, Omics-I (Microarray and Bulk RNA-Seq), Omics-II (Proteomics, Methylomics, Multi-omics integration, and Metagenomics), and Algorithmic Bioinformatics.</li>
+          <li>Developing course materials and assessments, running lab sessions, and providing one-on-one troubleshooting for student projects.</li>
+          <li>Delivering an internship on Systems Biology and Computer-Aided Drug Discovery.</li>
+          <li>Participating in multiple student outreach events such as open houses, Q&A panels, EduGate, alumni speeches.</li>
         </ul>
       </div>
 
       <div class="experience-item">
         <div class="experience-header">
           <div>
-            <h3>Systems Biology &amp; CADD Internship Instructor</h3>
+            <h3>Research Intern</h3>
             <p class="experience-org">Biotechnology Research &amp; Innovation Centre (BRIC), Nile University</p>
           </div>
           <span class="experience-date">2026</span>
         </div>
 
         <ul class="experience-points">
-          <li>Designed and instructed a practical internship covering systems biology, biological network analysis, and computer-aided drug discovery.</li>
-          <li>Introduced interns to STRING, Cytoscape, cytoHubba, MCODE, Reactome, PyMOL, Discovery Studio, and PyRx.</li>
-          <li>Guided interns from network-based target identification through protein structure analysis and molecular docking.</li>
-          <li>Mentored interns through the development of a final computational biology project.</li>
+          <li>Benchmarked multi-omics data integration methods under supervision of Dr. Mohamed Mysara, Head of the Bioinformatics Research Group at CIS.</li>
         </ul>
       </div>
 
