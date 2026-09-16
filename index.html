@@ -586,7 +586,7 @@
 <body>
 
 <!--
-  HOW TO EDIT THIS PAGE (quick guide for future-you)
+  HOW TO EDIT THIS PAGE (quick guide for future-me)
   ----------------------------------------------------
   1. TEXT: just find the sentence in the HTML below and type over it. Everything
      visible on the page is plain text between tags like <p>...</p> or <h2>...</h2>.
@@ -713,6 +713,20 @@
         </ul>
       </div>
 
+      <div class="experience-item">
+        <div class="experience-header">
+          <div>
+            <h3>Clinical Pathology Trainee</h3>
+            <p class="experience-org">57357 Children's Cancer Hospital</p>
+          </div>
+          <span class="experience-date">2026</span>
+        </div>
+
+        <ul class="experience-points">
+          <li>•	Completed a 10-day hands-on training covering clinical microbiology, sample processing, clinical chemistry, flow cytometry, and molecular biology.</li>
+        </ul>
+      </div>
+      
     </div>
   </div>
 </section>
@@ -748,7 +762,7 @@
             <div class="work-title">PDAC Integrative Transcriptomics</div>
 
             <div class="work-desc">
-              Integrated bulk and single-cell transcriptomic datasets to investigate pancreatic ductal adenocarcinoma, including preprocessing, normalization, batch correction, differential expression, functional enrichment, and survival analysis.
+              This project integrates single-cell and bulk RNA-seq datasets to identify molecular drivers of pancreatic ductal adenocarcinoma (PDAC). Two genes, RNF149 and MBOAT7, were identified through comparative expression in ductal cells and analyzed further in bulk TCGA data to understand their role in immune and lipid metabolic remodeling in PDAC.
             </div>
           </div>
 
@@ -783,7 +797,7 @@
             <div class="work-title">Systems Biology &amp; CADD Internship</div>
 
             <div class="work-desc">
-              Designed and taught a practical internship covering biological network analysis and computer-aided drug discovery, guiding interns from systems-level target identification through structural analysis and molecular docking.
+              Designed and taught a practical internship covering biological network analysis and computer-aided drug discovery, aimed at guiding interns from systems-level target identification through structural analysis and molecular docking.
             </div>
           </div>
 
@@ -818,7 +832,7 @@
             <div class="work-title">SMOC2 Fibrosis RNA-seq</div>
 
             <div class="work-desc">
-              Transcriptomic analysis of GSE85209 using DESeq2, followed by differential expression analysis and downstream functional enrichment to investigate gene-level changes associated with fibrosis.
+              Transcriptomic analysis of GSE85209 using DESeq2, followed by downstream functional enrichment to investigate gene-level changes associated with renal fibrosis in SMOC2-overexpressing mice.
             </div>
           </div>
 
@@ -829,42 +843,6 @@
           </div>
         </div>
       </a>
-
-
-      <a class="work-card card-block"
-         href="https://github.com/Nourine-Sabry/Brain-Tumor-Classification_CBIO313-CourseProject"
-         target="_blank"
-         rel="noopener">
-
-        <div class="work-chrome">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="work-file">brain_tumor_cnn.ipynb</span>
-        </div>
-
-        <div class="work-card-content">
-          <div class="work-card-body">
-            <div class="work-card-top">
-              <span class="work-year">2025</span>
-              <span class="work-tags">deep learning →</span>
-            </div>
-
-            <div class="work-title">Brain Tumor Classification</div>
-
-            <div class="work-desc">
-              Classified brain tumors from MRI images using a deep learning approach developed as part of a Data Mining &amp; Machine Learning course project.
-            </div>
-          </div>
-
-          <div class="work-thumb-wrap">
-            <img class="work-thumb"
-                 src="images/brain_tumor.png"
-                 alt="Brain Tumor Classification project">
-          </div>
-        </div>
-      </a>
-
 
       <a class="work-card card-block"
          href="https://github.com/Nourine-Sabry/Bioinformatics-CompBio_resources"
@@ -894,7 +872,7 @@
 
           <div class="work-thumb-wrap">
             <img class="work-thumb"
-                 src="images/compbio_resources.png"
+                 src="images/compbio_resources.jpg"
                  alt="Bioinformatics and Computational Biology Resources">
           </div>
         </div>
@@ -1061,8 +1039,8 @@
         <span class="work-file">notes.txt</span>
       </div>
       <div class="quotes-body">
-        <p class="quote-text" id="quoteText">"[placeholder quote one goes here]"</p>
-        <p class="quote-author" id="quoteAuthor">— [author one]</p>
+        <p class="quote-text" id="quoteText">"Life is so constructed that an event does not, cannot, will not, match the expectation."</p>
+        <p class="quote-author" id="quoteAuthor">— Charlotte Brontë</p>
       </div>
     </div>
   </div>
@@ -1093,7 +1071,10 @@
     { text: "Never mistake activity for achievement.", author: "John Wooden" },
     { text: "A goal is a dream with a deadline.", author: "Napoleon Hill" },
     { text: "A ship is safe in harbor, but that's not what ships are for.", author: "John A. Shedd" },
-    { text: "Well done is better than well said.", author: "Benjamin Franklin" }
+    { text: "Well done is better than well said.", author: "Benjamin Franklin" },
+    { text: "The structure of the system gives rise to its behaviour.", author: "Jay Wright Forrester" },
+    { text: "Knowledge is not power. Knowledge is only potential power. Action is power.", author: "Tony Robbins" },
+    { text: "The structure of the system gives rise to its behaviour.", author: "Jay Wright Forrester" }
   ];
   let quoteIndex = 0;
   const quoteTextEl = document.getElementById('quoteText');
