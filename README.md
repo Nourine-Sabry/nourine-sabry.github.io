@@ -2,4 +2,4 @@
 
 # Personal website
 
-![](/under_construction.jpg)
+# Last Updated: October 2026
