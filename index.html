@@ -505,7 +505,8 @@
 .pub-card:hover .pub-title{ color:var(--burgundy); }
 
   /* ---------- HIGHLIGHTS ---------- */
-  .highlights-card{ max-width:820px; margin:0 auto; }
+  /* change the 520px below to resize the whole card (smaller number = smaller card) */
+  .highlights-card{ max-width:520px; margin:0 auto; }
   .highlights-viewport{ overflow:hidden; }
   .highlights-track{ display:flex; transition:transform .5s ease; }
   .highlight-slide{ flex:0 0 100%; margin:0; }
@@ -513,18 +514,21 @@
     width:100%; aspect-ratio:3 / 2; object-fit:cover; display:block;
   }
   .highlight-slide figcaption{
-    padding:14px 20px; border-top:2px solid var(--bold);
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--bold);
+    padding:10px 14px; border-top:2px solid var(--bold);
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--bold);
   }
   .highlights-controls{
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
-    padding:14px 20px; border-top:2px solid var(--bold);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:10px 14px; border-top:2px solid var(--bold);
   }
-  .highlights-controls .btn{ background:var(--card-bg); color:var(--text); padding:8px 16px; }
+  .highlights-controls .btn{
+    background:var(--card-bg); color:var(--text);
+    padding:4px 12px; font-size:13px; box-shadow:3px 3px 0 var(--text);
+  }
   .highlights-controls .btn:hover{ background:var(--bold); color:var(--card-bg); }
-  .highlights-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .highlights-dots{ display:flex; gap:7px; flex-wrap:wrap; justify-content:center; }
   .highlights-dots button{
-    width:12px; height:12px; padding:0; border-radius:50%;
+    width:10px; height:10px; padding:0; border-radius:50%;
     border:2px solid var(--bold); background:transparent;
   }
   .highlights-dots button.active{ background:var(--burgundy); border-color:var(--burgundy); }
@@ -968,7 +972,7 @@
           <p>Stay tuned!</p>
         </div>
       </div>
-    <p class="now-updated">last updated: September 2026</p>
+    <p class="now-updated">last updated: November 2026</p>
   </div>
 </section>
 
