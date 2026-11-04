@@ -282,6 +282,11 @@
     content:"J ♣";
     transform:rotate(3deg);
   }
+
+  .experience-points li:nth-child(5)::before{ content:"10 ♥"; font-size:9px; transform:rotate(-2deg); }
+  
+  .experience-points li:nth-child(6)::before{ content:"9 ♠"; transform:rotate(2deg); }
+  
   /* ---------- PROJECTS (horizontal cards with image thumbnails) ---------- */
   
   .work-list{
@@ -499,6 +504,31 @@
 .pub-card:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--burgundy); }
 .pub-card:hover .pub-title{ color:var(--burgundy); }
 
+  /* ---------- HIGHLIGHTS ---------- */
+  .highlights-card{ max-width:820px; margin:0 auto; }
+  .highlights-viewport{ overflow:hidden; }
+  .highlights-track{ display:flex; transition:transform .5s ease; }
+  .highlight-slide{ flex:0 0 100%; margin:0; }
+  .highlight-slide img{
+    width:100%; aspect-ratio:3 / 2; object-fit:cover; display:block;
+  }
+  .highlight-slide figcaption{
+    padding:14px 20px; border-top:2px solid var(--bold);
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--bold);
+  }
+  .highlights-controls{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:14px 20px; border-top:2px solid var(--bold);
+  }
+  .highlights-controls .btn{ background:var(--card-bg); color:var(--text); padding:8px 16px; }
+  .highlights-controls .btn:hover{ background:var(--bold); color:var(--card-bg); }
+  .highlights-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .highlights-dots button{
+    width:12px; height:12px; padding:0; border-radius:50%;
+    border:2px solid var(--bold); background:transparent;
+  }
+  .highlights-dots button.active{ background:var(--burgundy); border-color:var(--burgundy); }
+  
 /* ---------- QUOTES ---------- */  
 .quotes-card{ max-width:720px; margin:0 auto; }
 .quotes-body{ padding:48px 40px; text-align:center; }
@@ -594,6 +624,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .eyebrow .cursor{ animation:none; }
+    .highlights-track{ transition:none; }
     html{ scroll-behavior:auto; }
   }
 </style>
@@ -635,6 +666,7 @@
       <li><a href="#now">Now</a></li>
       <li><a href="#awards">Awards</a></li>
       <li><a href="#publications">Publications</a></li>
+      <li><a href="#highlights">Highlights</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -1046,7 +1078,61 @@
   </div>
 </section>
 
-<section id="quotes" class="band-b">
+<section id="highlights" class="band-b">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="mark"></span>
+      <h2>Highlights</h2>
+    </div>
+
+    <div class="highlights-card card-block" id="highlightsCarousel">
+      <div class="work-chrome">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="work-file" id="highlightFile">highlight1.jpg</span>
+      </div>
+
+      <div class="highlights-viewport">
+        <div class="highlights-track" id="highlightTrack">
+
+          <figure class="highlight-slide">
+            <img src="images/highlight1.jpg" alt="AfricaBP26">
+            <figcaption>Event name · Month Year</figcaption>
+          </figure>
+
+          <figure class="highlight-slide">
+            <img src="images/highlight2.jpg" alt="UGRF" loading="lazy">
+            <figcaption>Event name · Month Year</figcaption>
+          </figure>
+
+          <figure class="highlight-slide">
+            <img src="images/highlight3.jpg" alt="IEEEWIE" loading="lazy">
+            <figcaption>Event name · Month Year</figcaption>
+          </figure>
+
+          <figure class="highlight-slide">
+            <img src="images/highlight3.jpg" alt="IEEEWIE" loading="lazy">
+            <figcaption>Event name · Month Year</figcaption>
+          </figure>
+
+          <figure class="highlight-slide">
+            <img src="images/highlight3.jpg" alt="IEEEWIE" loading="lazy">
+            <figcaption>Event name · Month Year</figcaption>
+          </figure>
+          
+          <!-- copy a whole <figure>...</figure> block to add more photos -->
+        </div>
+      </div>
+
+      <div class="highlights-controls">
+        <button type="button" class="btn" id="highlightPrev" aria-label="Previous photo">←</button>
+        <div class="highlights-dots" id="highlightDots"></div>
+        <button type="button" class="btn" id="highlightNext" aria-label="Next photo">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section id="quotes" class="band-a">
   <div class="wrap">
     <div class="section-head">
       <span class="mark"></span>
@@ -1066,7 +1152,7 @@
   </div>
 </section>
   
-<footer id="contact" class="band-a">
+<footer id="contact" class="band-b">
   <div class="wrap">
     <div class="contact-grid">
       <h2>Get in touch</h2>
@@ -1116,6 +1202,60 @@
     quoteIndex = (quoteIndex + 1) % quotes.length;
     showQuote(quoteIndex);
   }, 10000);
+</script>
+
+<script>
+  (function(){
+    const card   = document.getElementById('highlightsCarousel');
+    const track  = document.getElementById('highlightTrack');
+    const dotsEl = document.getElementById('highlightDots');
+    const fileEl = document.getElementById('highlightFile');
+    const slides = Array.from(track.children);
+    const total  = slides.length;
+    const INTERVAL = 5000; // milliseconds between automatic slides
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let index = 0, timer = null;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Show photo ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    function goTo(i){
+      index = (i + total) % total;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      Array.from(dotsEl.children).forEach((d, n) => d.classList.toggle('active', n === index));
+      fileEl.textContent = slides[index].querySelector('img').getAttribute('src').split('/').pop();
+    }
+    function stop(){ clearInterval(timer); timer = null; }
+    function start(){ stop(); if (!reduceMotion) timer = setInterval(() => goTo(index + 1), INTERVAL); }
+
+    document.getElementById('highlightPrev').addEventListener('click', () => goTo(index - 1));
+    document.getElementById('highlightNext').addEventListener('click', () => goTo(index + 1));
+
+    // pause while hovering or focused
+    card.addEventListener('mouseenter', stop);
+    card.addEventListener('mouseleave', start);
+    card.addEventListener('focusin', stop);
+    card.addEventListener('focusout', start);
+
+    // swipe on phones
+    let startX = null;
+    card.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, { passive:true });
+    card.addEventListener('touchend', e => {
+      if (startX !== null){
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+      }
+      startX = null; start();
+    });
+
+    goTo(0);
+    start();
+  })();
 </script>
   
 </body>
